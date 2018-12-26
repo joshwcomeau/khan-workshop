@@ -2,13 +2,22 @@
 import * as React from 'react';
 import { Motion, spring } from 'react-motion';
 
-import { Asterisk, Circle, Diamond } from './shapes';
+import { Asterisk } from './shapes';
 
 type Props = {
   angle: number,
   velocity: number,
   spin: number,
   children: React.Node,
+};
+
+const translateSpringSettings = {
+  stiffness: 50,
+  damping: 25,
+};
+const rotateSpringSettings = {
+  stiffness: 50,
+  damping: 35,
 };
 
 class Particle extends React.PureComponent<Props> {
@@ -24,26 +33,12 @@ class Particle extends React.PureComponent<Props> {
     const deltaY = Math.sin(angleInRads) * props.velocity;
     const deltaX = Math.cos(angleInRads) * props.velocity;
 
-    const translateSpringSettings = {
-      stiffness: props.velocity * 0.5,
-      damping: 25,
-    };
-    const rotateSpringSettings = {
-      stiffness: Math.abs(props.spin * 0.1),
-      damping: 7,
-    };
-
-    return { deltaX, deltaY, translateSpringSettings, rotateSpringSettings };
+    return { deltaX, deltaY };
   }
 
   render() {
     const { children, spin } = this.props;
-    const {
-      deltaX,
-      deltaY,
-      translateSpringSettings,
-      rotateSpringSettings,
-    } = this.state;
+    const { deltaX, deltaY } = this.state;
 
     return (
       <Motion
@@ -75,7 +70,5 @@ class Particle extends React.PureComponent<Props> {
 }
 
 Particle.Asterisk = Asterisk;
-Particle.Circle = Circle;
-Particle.Diamond = Diamond;
 
 export default Particle;
