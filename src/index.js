@@ -1,28 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { StyleSheet, css } from 'aphrodite';
 
-import Particle from './components/Particle';
+import BookAnimation from './components/BookAnimation';
 
 const App = () => (
-  <div
-    style={{
-      width: 500,
-      height: 500,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Particle angle={280} velocity={100} spin={360}>
-      <Particle.Asterisk />
-    </Particle>
-    <Particle angle={100} velocity={200}>
-      <Particle.Circle />
-    </Particle>
-    <Particle angle={24} velocity={50} spin={-360}>
-      <Particle.Diamond />
-    </Particle>
+  <div className={css(styles.wrapper)}>
+    <BookAnimation />
   </div>
 );
+
+const styles = StyleSheet.create({
+  wrapper: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#EEE',
+  },
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));

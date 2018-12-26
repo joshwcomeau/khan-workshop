@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 import { Motion, spring } from 'react-motion';
 
-import { Asterisk, Circle, Diamond } from './shapes';
+import { Asterisk, Circle, Diamond, Star, X } from './shapes';
 
 type Props = {
   angle: number,
@@ -56,6 +57,7 @@ class Particle extends React.PureComponent<Props> {
       >
         {interpolated => (
           <div
+            className={css(styles.particle)}
             style={{
               transform: `
                 translate(
@@ -77,5 +79,15 @@ class Particle extends React.PureComponent<Props> {
 Particle.Asterisk = Asterisk;
 Particle.Circle = Circle;
 Particle.Diamond = Diamond;
+Particle.Star = Star;
+Particle.X = X;
+
+const styles = StyleSheet.create({
+  particle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+  },
+});
 
 export default Particle;
