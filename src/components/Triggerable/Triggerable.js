@@ -20,7 +20,7 @@ class Triggerable extends Component {
       <div>
         {isShown && children}
         <br />
-        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+        <div style={{ display: 'flex', justifyContent: otherActions ? 'space-between' : 'center'}}>
           <Button onClick={this.retrigger}>Restart Animation</Button>
           {otherActions}
         </div>

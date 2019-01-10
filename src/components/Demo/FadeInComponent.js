@@ -20,7 +20,6 @@ const fadeInKeyframes = {
 const styles = StyleSheet.create({
   wrapper: {
     animationName: fadeInKeyframes,
-    animationDuration: '5000ms',
     animationTimingFunction: 'ease-in',
   },
 });

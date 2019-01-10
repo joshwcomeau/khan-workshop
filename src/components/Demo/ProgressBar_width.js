@@ -5,7 +5,7 @@ import Colors from '@khanacademy/wonder-blocks-color';
 const ProgressBar = ({
   width,
   height,
-  value,
+  progress,
 }) => (
   <div
     className={css(styles.wrapper)}
@@ -14,7 +14,7 @@ const ProgressBar = ({
     <div
       className={css(styles.bar)}
       style={{
-        width: width * value,
+        width: width * progress,
         height,
       }}
     />

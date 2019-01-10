@@ -1,5 +1,6 @@
 import { Head, Image } from 'mdx-deck';
 import { CodeSurfer } from 'mdx-deck-code-surfer';
+import { Value, Toggle } from 'react-powerplug'
 
 export { default as theme } from './presentation-theme';
 
@@ -18,11 +19,19 @@ import BookAnimation from './src/components/BookAnimation';
 
 ---
 
-### A word on formatting...
+### "workshop"
 
 ---
 
-## Part 1: Introduction
+### What this workshop is *not*
+
+- "Intro to designing animations"
+- Comprehensive
+- The only one of these I'll do, if there's interest 😄
+
+---
+
+## Part I: Introduction
 
 ---
 
@@ -46,15 +55,23 @@ So, we have this awesome new illustration style...
 
 ---
 
-This new style is part of an effort to make our product more fun.
+"Khan Academy is boring"
 
 ---
 
-What if they were ✨ animated ✨?
+<a href="https://www.youtube.com/watch?v=KUDh6sCtm8s" target="_blank">
+  <img src="presentation-assets/stop-drawing-dead-fish.png" />
+</a>
+
+https://www.youtube.com/watch?v=KUDh6sCtm8s
 
 ---
 
-I really like doing this kind of work.
+Let's apply that idea to our WonderBlocks illustrations!
+
+---
+
+Examples of whimsical animation
 
 ---
 
@@ -101,7 +118,7 @@ I really like doing this kind of work.
 
 ---
 
-## Wouldn't it be great if our product had whimsical touches like this?
+## Design wants to do stuff like this in 2019
 
 ---
 
@@ -123,7 +140,7 @@ I really like doing this kind of work.
 
 ---
 
-import { Value } from 'react-powerplug'
+
 import Button from '@khanacademy/wonder-blocks-button';
 
 import ProgressBar from './src/components/Demo/ProgressBar';
@@ -134,7 +151,7 @@ import ProgressBar from './src/components/Demo/ProgressBar';
       <ProgressBar
         width={300}
         height={15}
-        value={value}
+        progress={value}
       />
       <br />
       <Button onClick={() => set(Math.random())}>
@@ -194,7 +211,7 @@ import ProgressBar from './src/components/Demo/ProgressBar';
       <ProgressBar
         width={300}
         height={15}
-        value={value}
+        progress={value}
       />
       <br />
       <Button onClick={() => set(Math.random())}>
@@ -229,7 +246,7 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
       <ProgressBarKeyframes
         width={300}
         height={15}
-        value={value}
+        progress={value}
       />
     </Triggerable>
   )}
@@ -237,7 +254,7 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
 
 ---
 
-### CSS Animations
+### CSS Keyframe Animations
 
 ---
 
@@ -266,7 +283,7 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
   lang="js"
   showNumbers={true}
   dark={false}
-  steps={[{}, { range: [4, 5] }, {range: [5, 10]}, { range: [11] }, { range: [15, 18] }, { range: [20, 25] }]}
+  steps={[{}, { lines: [4] }, {range: [5, 10]}, { lines: [11] }, { range: [15, 18] }, { range: [20, 25] }]}
 />
 
 ---
@@ -282,4 +299,203 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
 
 ---
 
+## Also good for:
+
+---
+
+Looping animations (spinners):
+<img src="presentation-assets/spinner.gif" />
+
+---
+
+SFX:
+<img src="presentation-assets/tada.gif" />
+---
+
 ### What if we want to fade out as well?
+
+---
+
+import ProgressBarInAndOut from './src/components/Demo/ProgressBar.fade-in-and-out';
+
+<Value initial={0.5}>
+  {({ value, set }) => (
+    <Toggle initial={true}>
+      {({ on, toggle }) => (
+        <React.Fragment>
+          <ProgressBarInAndOut
+            width={300}
+            height={15}
+            progress={value}
+            isVisible={on}
+          />
+          <Button onClick={toggle}>{on ? 'Unmount' : 'Remount'}</Button>
+          &nbsp;
+          <Button onClick={() => set(Math.random())}>
+            Set Random Value
+          </Button>
+        </React.Fragment>
+      )}
+    </Toggle>
+  )}
+</Value>
+
+---
+
+
+<CodeSurfer
+  code={require('!raw-loader!./src/components/Demo/FadeOutProblem.js')}
+  lang="js"
+  showNumbers={true}
+  dark={false}
+  steps={[{}]}
+/>
+
+---
+
+### The solution:
+
+`react-css-transition-group`, via `aphrodite-css-transition-group`
+
+---
+
+### Spring Physics
+
+via React Motion
+
+---
+
+<img src="presentation-assets/spring-demo-1.gif" />
+
+---
+
+<img src="presentation-assets/spring-demo-2.gif" />
+
+---
+
+<CodeSurfer
+  title="React Motion progress bar"
+  code={require('!raw-loader!./src/components/Demo/ProgressBar.spring.js')}
+  lang="js"
+  showNumbers={true}
+  dark={false}
+  steps={[{}, { lines: [3] }, {range: [11, 14]}, { lines: [15] }, { lines: [16] }, {range: [17, 24]}, { lines: [22] }, { range: [37, 39] }]}
+/>
+
+
+---
+
+import ProgressBarSpring from './src/components/Demo/ProgressBar.spring';
+
+# With React Motion:
+
+<Value initial={0.5}>
+  {({ value, set }) => (
+    <Toggle initial={true}>
+      {({ on, toggle }) => (
+        <React.Fragment>
+          <ProgressBarSpring
+            width={300}
+            height={15}
+            progress={value}
+            isVisible={on}
+          />
+          <Button onClick={() => set(Math.random())}>
+            Set Random Value
+          </Button>
+        </React.Fragment>
+      )}
+    </Toggle>
+  )}
+</Value>
+
+---
+
+### Using CSS transition:
+
+<Value initial={0.5}>
+  {({ value, set }) => (
+    <React.Fragment>
+      <ProgressBar
+        width={300}
+        height={15}
+        progress={value}
+      />
+      <br />
+      <Button onClick={() => set(Math.random())}>
+        Set Random Value
+      </Button>
+    </React.Fragment>
+  )}
+</Value>
+
+---
+
+import ProgressBarSpringAdvanced from './src/components/Demo/ProgressBar.spring.advanced';
+
+### Springier!
+
+<Value initial={0.5}>
+  {({ value, set }) => (
+    <Toggle initial={true}>
+      {({ on, toggle }) => (
+        <React.Fragment>
+          <ProgressBarSpringAdvanced
+            width={300}
+            height={15}
+            progress={value}
+            isVisible={on}
+            stiffness={150}
+            damping={10}
+          />
+          <Button onClick={() => set(Math.random())}>
+            Set Random Value
+          </Button>
+        </React.Fragment>
+      )}
+    </Toggle>
+  )}
+</Value>
+
+
+---
+
+<a href="http://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser/" target="_blank">
+  Spring parameter chooser
+</a>
+
+
+---
+
+React Motion is just a fancy number generator
+
+---
+
+### advantages:
+
+- Incredibly smooth, organic motion
+- Physics-based interrupts
+
+---
+
+### disadvantages:
+
+- Can get stuttery during busy periods
+
+---
+
+<video
+  loop
+  controls
+  src="presentation-assets/perff.mp4"
+  style={{
+    width: '100%',
+    margin: 'auto',
+  }}
+/>
+
+
+---
+
+# Part III:
+# Let's build something!

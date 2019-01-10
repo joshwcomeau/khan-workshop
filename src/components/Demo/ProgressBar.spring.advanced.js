@@ -1,46 +1,43 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import {Motion, spring} from 'react-motion';
 import Colors from '@khanacademy/wonder-blocks-color';
 
 const ProgressBar = ({
   width,
   height,
   progress,
+  stiffness,
+  damping,
 }) => (
   <div
     className={css(styles.wrapper)}
     style={{width, height}}
   >
-    <div
-      className={css(styles.bar)}
-      style={{
-        width,
-        height,
-        transform: `scaleX(${progress})`,
-      }}
-    />
+    <Motion style={{ progress: spring(progress, {stiffness, damping, precision: 0.001}) }}>
+      {interpolated => (
+        <div
+          className={css(styles.bar)}
+          style={{
+            width,
+            height,
+            transform: `scaleX(${interpolated.progress})`,
+          }}
+        />
+      )}
+    </Motion>
   </div>
 );
-
-const fadeIn = {
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-}
 
 const styles = StyleSheet.create({
   wrapper: {
     background: '#EEE',
     borderRadius: 20,
     overflow: 'hidden',
-    animationName: fadeIn,
-    animationDuration: '1000ms',
-    animationTimingFunction: 'ease-in',
   },
-
   bar: {
     background: Colors.teal,
-    transition: `transform 500ms`,
-    transformOrigin: 'left',
+    transformOrigin: 'left center',
     willChange: 'transform',
   }
 });
