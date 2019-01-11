@@ -23,55 +23,15 @@ import BookAnimation from './src/components/BookAnimation';
 
 ---
 
-### What this workshop is *not*
-
-- "Intro to designing animations"
-- Comprehensive
-- The only one of these I'll do, if there's interest 😄
+# Part I: Introduction
 
 ---
 
-## Part I: Introduction
+### What do I mean by "Whimsy"?
 
 ---
 
-So, we have this awesome new illustration style...
-
----
-
-<img src="presentation-assets/example-sal.png" />
-
----
-
-<img src="presentation-assets/example-character-celebration.png" />
-
----
-
-<img src="presentation-assets/example-characters-2.png" />
-
----
-
-<img src="presentation-assets/example-banner-skateboard.png" />
-
----
-
-"Khan Academy is boring"
-
----
-
-<a href="https://www.youtube.com/watch?v=KUDh6sCtm8s" target="_blank">
-  <img src="presentation-assets/stop-drawing-dead-fish.png" />
-</a>
-
-https://www.youtube.com/watch?v=KUDh6sCtm8s
-
----
-
-Let's apply that idea to our WonderBlocks illustrations!
-
----
-
-Examples of whimsical animation
+<img src="presentation-assets/whimsy-definition.png" style={{ width: '700px' }} />
 
 ---
 
@@ -91,16 +51,6 @@ Examples of whimsical animation
 
 ---
 
-<video
-  controls
-  loop
-  src="presentation-assets/mail.mp4"
-  style={{
-    width: '100%',
-    margin: 'auto',
-  }}
-/>
----
 
 <video
   controls
@@ -118,7 +68,63 @@ Examples of whimsical animation
 
 ---
 
-## Design wants to do stuff like this in 2019
+## Why is this important?
+
+Surely there are higher-priority things we could be doing with our limited dev time?
+
+---
+
+<div style={{ fontWeight: 'bold', fontSize: 72}}>"Khan Academy is boring"</div>
+
+The #1 reason people don't use Khan, according to Nancy's US branding study
+
+---
+
+### It's one of our new core values.
+
+<br />
+
+<img src="presentation-assets/core-values.png" style={{width: '100%' }}/>
+
+---
+
+## Design is thinking a lot about this.
+
+---
+
+## Wonder blocks is whimsical!
+
+---
+
+<img src="presentation-assets/example-sal.png" />
+
+---
+
+<img src="presentation-assets/example-character-celebration.png" />
+
+---
+
+<img src="presentation-assets/example-characters-2.png" />
+
+---
+
+<img src="presentation-assets/example-banner-skateboard.png" />
+
+---
+
+### Are illustrations sufficient?
+
+---
+
+<a href="https://www.youtube.com/watch?v=KUDh6sCtm8s" target="_blank">
+  <img src="presentation-assets/stop-drawing-dead-fish.png" />
+</a>
+
+https://www.youtube.com/watch?v=KUDh6sCtm8s
+
+---
+
+### The thing we'll build
 
 ---
 
@@ -223,12 +229,6 @@ import ProgressBar from './src/components/Demo/ProgressBar';
 
 ---
 
-<a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank">
-  More about Transforms
-</a>
-
----
-
 import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
 
 <Value initial={0.5}>
@@ -263,7 +263,7 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
   lang="css"
   showNumbers={true}
   dark={false}
-  steps={[{}, { range: [1, 8] }, { range: [10, 14] }, { lines: [1, 11] }, {range: [12, 13]}]}
+  steps={[{}]}
 />
 
 ---
@@ -273,7 +273,7 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
   lang="js"
   showNumbers={true}
   dark={false}
-  steps={[{}, { range: [1, 4] }, { range: [6, 12] }, ]}
+  steps={[{}]}
 />
 ---
 
@@ -305,6 +305,13 @@ import ProgressBarKeyframes from './src/components/Demo/ProgressBar.keyframes';
 
 Looping animations (spinners):
 <img src="presentation-assets/spinner.gif" />
+
+<br /><br />
+
+```
+animationTimingFunction: 'linear',
+animationIterationCount: 'infinite',
+```
 
 ---
 
@@ -365,11 +372,11 @@ via React Motion
 
 ---
 
-<img src="presentation-assets/spring-demo-1.gif" />
+<img src="presentation-assets/chat-heads.gif" style={{ width: '50vw' }}/>
 
 ---
 
-<img src="presentation-assets/spring-demo-2.gif" />
+<img src="presentation-assets/spring-demo-2.gif" style={{ width: '50vw' }}/>
 
 ---
 
@@ -386,8 +393,6 @@ via React Motion
 ---
 
 import ProgressBarSpring from './src/components/Demo/ProgressBar.spring';
-
-# With React Motion:
 
 <Value initial={0.5}>
   {({ value, set }) => (
@@ -409,9 +414,8 @@ import ProgressBarSpring from './src/components/Demo/ProgressBar.spring';
   )}
 </Value>
 
----
 
-### Using CSS transition:
+---
 
 <Value initial={0.5}>
   {({ value, set }) => (
@@ -432,8 +436,6 @@ import ProgressBarSpring from './src/components/Demo/ProgressBar.spring';
 ---
 
 import ProgressBarSpringAdvanced from './src/components/Demo/ProgressBar.spring.advanced';
-
-### Springier!
 
 <Value initial={0.5}>
   {({ value, set }) => (
@@ -494,8 +496,35 @@ React Motion is just a fancy number generator
   }}
 />
 
+---
+
+## a11y
+
+---
+
+<img src="presentation-assets/a11y.png" style={{ width: '100%'}} />
+
+---
+
+```
+KA.prefersReducedMotion()
+```
+
 
 ---
 
 # Part III:
 # Let's build something!
+
+---
+
+
+<Triggerable>
+  <BookAnimation />
+</Triggerable>
+
+---
+
+# THE END
+
+Feedback welcome!

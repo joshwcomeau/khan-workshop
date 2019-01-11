@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   bar: {
     background: Colors.teal,
     transition: `transform 500ms`,
-    transformOrigin: 'left',
     willChange: 'transform',
+    transformOrigin: 'left',
   }
 });
 

@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   },
   bar: {
     background: Colors.teal,
-    transformOrigin: 'left center',
     willChange: 'transform',
+    transformOrigin: 'left center',
   }
 });
 

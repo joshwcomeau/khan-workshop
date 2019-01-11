@@ -12,25 +12,27 @@ class BookAnimation extends Component {
   render() {
     return (
       <div className={css(styles.wrapper)}>
-        <Particle angle={-65} velocity={150}>
-          <Particle.Asterisk />
-        </Particle>
+        <FadeInAfter delay={100} duration={0}>
+          <Particle angle={-65} velocity={150} spin={90}>
+            <Particle.Asterisk />
+          </Particle>
+        </FadeInAfter>
         <Particle angle={-135} velocity={140}>
           <Particle.Circle />
         </Particle>
         <Particle angle={-120} velocity={100}>
           <Particle.Circle type="fill" color="#FFD633" />
         </Particle>
-        <Particle angle={-125} velocity={190}>
+        <Particle angle={-125} velocity={190} spin={-360}>
           <Particle.Diamond />
         </Particle>
-        <Particle angle={-120} velocity={150}>
+        <Particle angle={-120} velocity={150} spin={-90}>
           <Particle.Star />
         </Particle>
         <Particle angle={-185} velocity={150}>
           <Particle.Circle type="fill" color="#FFD633" />
         </Particle>
-        <Particle angle={-75} velocity={200}>
+        <Particle angle={-75} velocity={200} spin={360}>
           <Particle.X />
         </Particle>
 
